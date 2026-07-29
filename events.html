@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore the Rotaract Club of Kitale 2026–2027 annual plan, monthly themes, fellowships, service projects, professional development, and club activities.">
+  <meta name="description" content="View the Rotaract Club of Kitale 2026–2027 interactive activity calendar and annual calendar overview.">
   <meta name="theme-color" content="#D41367">
-  <title>Events &amp; Annual Plan 2026–2027 | Rotaract Club of Kitale</title>
+  <title>Annual Calendar 2026–2027 | Rotaract Club of Kitale</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js?v=20260728-3" defer></script>
+  <script src="script.js?v=20260729-1" defer></script>
 </head>
 <body data-page="events">
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -54,85 +54,24 @@
   </header>
 
   <main id="main-content">
-    <noscript class="noscript-notice"><div class="container"><strong>JavaScript is disabled.</strong> Enable JavaScript to display the interactive activity calendar. The rest of the annual-plan page remains available below.</div></noscript>
+    <noscript class="noscript-notice">
+      <div class="container">
+        <strong>JavaScript is disabled.</strong> Enable JavaScript to display the activity calendars.
+      </div>
+    </noscript>
+
     <section class="page-hero">
       <div class="container page-hero-grid">
         <div class="reveal">
-          <span class="eyebrow eyebrow-light">Annual Plan • 2026–2027</span>
-          <h1>A full year of service, learning, and fellowship.</h1>
-          <p>Explore the Rotaract Club of Kitale programme from July 2026 to June 2027, including monthly Rotary themes, club meetings, community projects, membership activities, and professional development.</p>
+          <span class="eyebrow eyebrow-light">Annual Calendar • 2026–2027</span>
+          <h1>See every club activity in one calendar.</h1>
+          <p>Browse scheduled fellowships, service projects, professional development sessions, membership activities, and club meetings from July 2026 to June 2027.</p>
           <div class="hero-actions action-top">
-            <a class="btn btn-gold" href="#annual-programme">Browse the Programme</a>
-            <a class="btn btn-white-outline" href="#interactive-calendar">View Calendar</a>
+            <a class="btn btn-gold" href="#interactive-calendar">Open Monthly Calendar</a>
+            <a class="btn btn-white-outline" href="#annual-overview">View All 12 Months</a>
           </div>
         </div>
         <img class="page-hero-image reveal" src="assets/images/events-hero.svg" alt="Placeholder for a Rotaract Club of Kitale event photograph">
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="notice-card reveal">
-          <strong>Annual plan uploaded</strong>
-          <p>This page now reflects the club’s 2026–2027 annual plan. School visits, medical camps, outreach activities, venues, and partner-dependent dates should still be reconfirmed before each activity is publicly promoted.</p>
-        </div>
-
-        <div class="event-summary-grid">
-          <article class="event-stat reveal"><strong data-event-stat="activities">0</strong><span>planned activities</span></article>
-          <article class="event-stat reveal"><strong data-event-stat="themes">0</strong><span>monthly themes</span></article>
-          <article class="event-stat reveal"><strong data-event-stat="service">0</strong><span>service activities</span></article>
-          <article class="event-stat reveal"><strong data-event-stat="rhythms">0</strong><span>regular club rhythms</span></article>
-        </div>
-
-        <div class="section-heading center reveal">
-          <span class="eyebrow">Monthly Focus</span>
-          <h2>The Rotary year at a glance</h2>
-          <p>Select any month to jump directly to its activities.</p>
-        </div>
-        <div class="theme-grid" data-monthly-themes></div>
-      </div>
-    </section>
-
-    <section class="section-soft" id="annual-programme" data-event-programme>
-      <div class="container">
-        <div class="section-heading heading-row reveal">
-          <div>
-            <span class="eyebrow">Annual Programme</span>
-            <h2>Find the activity you need</h2>
-            <p>Browse by month, search for a specific activity, or filter by programme category.</p>
-          </div>
-          <div class="calendar-actions">
-            <button class="btn btn-outline" type="button" data-print-calendar>Print Annual Plan</button>
-            <a class="btn btn-primary" href="contact.html?reason=event">Ask About an Event</a>
-          </div>
-        </div>
-
-        <div class="event-toolbar reveal">
-          <label class="event-control event-search">
-            <span>Search activities</span>
-            <input type="search" placeholder="Try “medical camp”, “book club”, or “school”" data-event-search>
-          </label>
-
-          <label class="event-control">
-            <span>Choose a month</span>
-            <select data-event-month aria-label="Choose a month"></select>
-          </label>
-
-          <button class="btn btn-outline event-clear" type="button" data-clear-event-filters>Clear filters</button>
-        </div>
-
-        <div class="event-filters reveal" role="group" aria-label="Filter activities by category">
-          <button class="filter-btn active" type="button" data-event-filter="all">All</button>
-          <button class="filter-btn" type="button" data-event-filter="administration">Club Admin</button>
-          <button class="filter-btn" type="button" data-event-filter="membership">Membership</button>
-          <button class="filter-btn" type="button" data-event-filter="fellowship">Fellowship</button>
-          <button class="filter-btn" type="button" data-event-filter="service">Service</button>
-          <button class="filter-btn" type="button" data-event-filter="learning">Learning</button>
-          <button class="filter-btn" type="button" data-event-filter="fundraising">Fundraising</button>
-        </div>
-
-        <p class="event-results reveal" data-event-results aria-live="polite"></p>
-        <div class="event-list" data-event-list aria-live="polite"></div>
       </div>
     </section>
 
@@ -141,10 +80,10 @@
         <div class="section-heading heading-row reveal">
           <div>
             <span class="eyebrow">Interactive Calendar</span>
-            <h2>See the actual activities on each date</h2>
-            <p>Move from month to month, select an activity for full details, or choose a date to view everything planned for that day.</p>
+            <h2>Activities on their scheduled dates</h2>
+            <p>Use the arrows or month selector to move through the year. Select a date or activity to view its details.</p>
           </div>
-          <a class="btn btn-outline" href="#annual-overview">View all 12 months</a>
+          <a class="btn btn-outline" href="#annual-overview">View All 12 Months</a>
         </div>
 
         <div class="calendar-legend reveal" aria-label="Calendar categories">
@@ -187,8 +126,8 @@
       <div class="container">
         <div class="section-heading center reveal">
           <span class="eyebrow">July 2026–June 2027</span>
-          <h2>The full Rotary year at a glance</h2>
-          <p>Use this compact view to scan the whole year. Select a highlighted date to open that month in the interactive calendar.</p>
+          <h2>The complete annual calendar</h2>
+          <p>Select a highlighted date to open that month in the interactive calendar.</p>
         </div>
 
         <div class="annual-calendar" data-annual-calendar data-start-year="2026" data-start-month="6"></div>
@@ -199,57 +138,6 @@
       <button class="dialog-close" type="button" data-event-dialog-close aria-label="Close event details">×</button>
       <div data-event-dialog-content></div>
     </dialog>
-
-
-
-    <section>
-      <div class="container">
-        <div class="section-heading heading-row reveal">
-          <div>
-            <span class="eyebrow">Event Photos</span>
-            <h2>Turn each activity into a story</h2>
-            <p>Replace these placeholders with photographs from installations, school visits, professional development sessions, medical camps, and fellowships.</p>
-          </div>
-          <a class="btn btn-outline" href="gallery.html">Open Full Gallery</a>
-        </div>
-
-        <div class="event-photo-grid">
-          <figure class="reveal">
-            <img src="assets/images/gallery-01.svg" alt="Placeholder for a Rotaract service activity photograph">
-            <figcaption>Community service and project impact</figcaption>
-          </figure>
-          <figure class="reveal">
-            <img src="assets/images/gallery-04.svg" alt="Placeholder for a Rotaract fellowship photograph">
-            <figcaption>Fellowships, installations, and member moments</figcaption>
-          </figure>
-          <figure class="reveal">
-            <img src="assets/images/gallery-07.svg" alt="Placeholder for a Rotaract training photograph">
-            <figcaption>Leadership and professional development</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-dark">
-      <div class="container split">
-        <div class="section-copy reveal">
-          <span class="eyebrow eyebrow-light">Host or Support an Activity</span>
-          <h2>Great activities are built through collaboration.</h2>
-          <p>Partners can provide venues, facilitators, transport, refreshments, learning materials, health expertise, media support, or sponsorship for the annual programme.</p>
-          <a class="btn btn-gold" href="partners.html">Explore Partnership Options</a>
-        </div>
-
-        <div class="event-host-card reveal">
-          <img src="assets/images/event-host.svg" alt="Placeholder for a Rotaract event partnership photograph">
-          <div>
-            <h3>Regular Saturday fellowship</h3>
-            <p><strong>Typical time:</strong> 5:30 PM</p>
-            <p><strong>Venue:</strong> Confirmed before each activity</p>
-            <p><strong>Guest attendance:</strong> Contact the club before attending</p>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">
