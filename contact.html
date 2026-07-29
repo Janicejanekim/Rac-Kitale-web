@@ -15,10 +15,29 @@
   <link rel="stylesheet" href="styles.css?v=20260729-contact-email">
 
   <script src="script.js?v=20260729-contact-email" defer></script>
-  <script src="contact-form.js?v=20260729-contact-email" defer></script>
+  <script src="contact-form.js?v=20260729-restart" defer></script>
 </head>
 
 <body data-page="contact">
+  <div
+    class="submission-toast"
+    data-submission-toast
+    role="status"
+    aria-live="polite"
+    hidden
+  >
+    <span class="submission-toast__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M9.2 16.6 4.6 12l-1.4 1.4 6 6L21 7.6 19.6 6.2 9.2 16.6Z"/>
+      </svg>
+    </span>
+
+    <span>
+      <strong>Message sent successfully.</strong>
+      Your enquiry has been delivered to the club’s email.
+    </span>
+  </div>
+
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <div class="topbar">
@@ -226,26 +245,12 @@
         </aside>
 
         <div class="contact-form-card" id="contact-form">
-          <div class="form-success-state" data-form-success hidden aria-live="polite">
-            <span class="form-success-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M9.2 16.6 4.6 12l-1.4 1.4 6 6L21 7.6 19.6 6.2 9.2 16.6Z"/>
-              </svg>
-            </span>
-
-            <h2>Message sent successfully.</h2>
-
-            <p>
-              Thank you for contacting Rotaract Club of Kitale. Your message has been sent directly to rotaractkitale@gmail.com. The club will get back to you as soon as possible.
-            </p>
-          </div>
 
           <form
             class="email-contact-form"
             action="https://formsubmit.co/rotaractkitale@gmail.com"
             method="POST"
             data-email-form
-            data-email-endpoint="https://formsubmit.co/ajax/rotaractkitale@gmail.com"
           >
             <div data-form-content>
               <div class="form-intro">
@@ -258,6 +263,12 @@
               </div>
 
               <input type="hidden" name="_recipient" value="rotaractkitale@gmail.com">
+              <input
+                id="form-next-url"
+                type="hidden"
+                name="_next"
+                value="https://janicejanekim.github.io/contact.html?sent=1#contact-form"
+              >
               <input
                 type="hidden"
                 name="_subject"
@@ -343,13 +354,7 @@
                 data-submit-button
               >
                 <span data-submit-label>Send Message</span>
-                <span class="button-spinner" data-submit-spinner hidden aria-hidden="true"></span>
               </button>
-
-              <p class="form-error-message" data-form-error hidden aria-live="polite">
-                We could not send your message. Please check your connection and
-                try again, or email rotaractkitale@gmail.com directly.
-              </p>
 
               <p class="contact-form-help">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
