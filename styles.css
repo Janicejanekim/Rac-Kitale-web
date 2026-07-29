@@ -1336,3 +1336,34 @@ p { color: var(--muted); }
     display: none !important;
   }
 }
+
+.contact-socials {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.social-contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #d41367;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-contact-link:hover {
+    color: #17458f;
+    transform: translateY(-2px);
+    text-decoration: underline;
+}
+
+.social-contact-icon {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
