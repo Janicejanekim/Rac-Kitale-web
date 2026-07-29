@@ -12,32 +12,12 @@
   <title>Contact Us | Rotaract Club of Kitale</title>
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20260729-contact-email">
+  <link rel="stylesheet" href="styles.css?v=20260729-contact-restart">
 
-  <script src="script.js?v=20260729-contact-email" defer></script>
-  <script src="contact-form.js?v=20260729-restart" defer></script>
+  <script src="script.js?v=20260729-contact-restart" defer></script>
 </head>
 
 <body data-page="contact">
-  <div
-    class="submission-toast"
-    data-submission-toast
-    role="status"
-    aria-live="polite"
-    hidden
-  >
-    <span class="submission-toast__icon" aria-hidden="true">
-      <svg viewBox="0 0 24 24">
-        <path d="M9.2 16.6 4.6 12l-1.4 1.4 6 6L21 7.6 19.6 6.2 9.2 16.6Z"/>
-      </svg>
-    </span>
-
-    <span>
-      <strong>Message sent successfully.</strong>
-      Your enquiry has been delivered to the club’s email.
-    </span>
-  </div>
-
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <div class="topbar">
@@ -245,12 +225,26 @@
         </aside>
 
         <div class="contact-form-card" id="contact-form">
+          <div class="form-success-state" data-form-success hidden aria-live="polite">
+            <span class="form-success-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M9.2 16.6 4.6 12l-1.4 1.4 6 6L21 7.6 19.6 6.2 9.2 16.6Z"/>
+              </svg>
+            </span>
+
+            <h2>Message sent successfully.</h2>
+
+            <p>
+              Thank you for contacting Rotaract Club of Kitale. Your message has been sent directly to rotaractkitale@gmail.com. The club will get back to you as soon as possible.
+            </p>
+          </div>
 
           <form
             class="email-contact-form"
             action="https://formsubmit.co/rotaractkitale@gmail.com"
             method="POST"
             data-email-form
+            data-email-endpoint="https://formsubmit.co/ajax/rotaractkitale@gmail.com"
           >
             <div data-form-content>
               <div class="form-intro">
@@ -263,12 +257,7 @@
               </div>
 
               <input type="hidden" name="_recipient" value="rotaractkitale@gmail.com">
-              <input
-                id="form-next-url"
-                type="hidden"
-                name="_next"
-                value="https://janicejanekim.github.io/contact.html?sent=1#contact-form"
-              >
+              <input type="hidden" name="_url" data-form-page-url value="">
               <input
                 type="hidden"
                 name="_subject"
@@ -354,7 +343,13 @@
                 data-submit-button
               >
                 <span data-submit-label>Send Message</span>
+                <span class="button-spinner" data-submit-spinner hidden aria-hidden="true"></span>
               </button>
+
+              <p class="form-error-message" data-form-error hidden aria-live="polite">
+                We could not send your message. Please check your connection and
+                try again, or email rotaractkitale@gmail.com directly.
+              </p>
 
               <p class="contact-form-help">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -450,5 +445,169 @@
   </footer>
 
   <button class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
+  <script>
+    "use strict";
+
+    (function () {
+      const form = document.querySelector("[data-email-form]");
+      const successState = document.querySelector("[data-form-success]");
+
+      if (!form || !successState) {
+        return;
+      }
+
+      const endpoint =
+        form.dataset.emailEndpoint ||
+        "https://formsubmit.co/ajax/rotaractkitale@gmail.com";
+
+      const content = form.querySelector("[data-form-content]");
+      const errorMessage = form.querySelector("[data-form-error]");
+      const submitButton = form.querySelector("[data-submit-button]");
+      const submitLabel = form.querySelector("[data-submit-label]");
+      const submitSpinner = form.querySelector("[data-submit-spinner]");
+      const reasonField = form.elements.reason;
+      const pageUrlField = form.querySelector("[data-form-page-url]");
+
+      const successKey = "rotaract-kitale-contact-sent";
+
+      if (pageUrlField) {
+        pageUrlField.value = window.location.href.split("#")[0];
+      }
+
+      function preselectReasonFromUrl() {
+        if (!reasonField) {
+          return;
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const requestedReason = params.get("reason");
+
+        if (!requestedReason) {
+          return;
+        }
+
+        const matchingOption = Array.from(reasonField.options).find(function (option) {
+          return option.value.toLowerCase() === requestedReason.toLowerCase();
+        });
+
+        if (matchingOption) {
+          reasonField.value = matchingOption.value;
+        }
+      }
+
+      function setSubmitting(isSubmitting) {
+        if (!submitButton || !submitLabel || !submitSpinner) {
+          return;
+        }
+
+        submitButton.disabled = isSubmitting;
+        submitButton.setAttribute("aria-busy", String(isSubmitting));
+        submitLabel.textContent = isSubmitting ? "Sending..." : "Send Message";
+        submitSpinner.hidden = !isSubmitting;
+      }
+
+      function showError(message) {
+        if (!errorMessage) {
+          return;
+        }
+
+        errorMessage.textContent = message;
+        errorMessage.hidden = false;
+      }
+
+      function hideError() {
+        if (errorMessage) {
+          errorMessage.hidden = true;
+        }
+      }
+
+      function showSuccessAfterRestart() {
+        if (sessionStorage.getItem(successKey) !== "yes") {
+          return;
+        }
+
+        sessionStorage.removeItem(successKey);
+        form.hidden = true;
+        successState.hidden = false;
+        successState.classList.add("form-success-enter");
+
+        window.setTimeout(function () {
+          successState.classList.remove("form-success-enter");
+          successState.classList.add("form-success-exit");
+
+          window.setTimeout(function () {
+            successState.hidden = true;
+            successState.classList.remove("form-success-exit");
+            form.hidden = false;
+
+            if (content) {
+              content.classList.remove("form-content-exit");
+            }
+          }, 220);
+        }, 5000);
+      }
+
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        if (!form.reportValidity()) {
+          return;
+        }
+
+        hideError();
+        setSubmitting(true);
+
+        try {
+          const response = await fetch(endpoint, {
+            method: "POST",
+            body: new FormData(form),
+            headers: {
+              Accept: "application/json"
+            }
+          });
+
+          const result = await response.json().catch(function () {
+            return {};
+          });
+
+          if (
+            !response.ok ||
+            result.success === "false" ||
+            result.success === false
+          ) {
+            throw new Error(
+              result.message || "The form submission was unsuccessful."
+            );
+          }
+
+          form.reset();
+          sessionStorage.setItem(successKey, "yes");
+
+
+    
+          window.location.replace(
+            window.location.pathname +
+            window.location.search +
+            "#contact-form"
+          );
+          window.location.reload();
+        } catch (error) {
+          console.error("Contact form submission failed:", error);
+
+          showError(
+            "We could not send your message right now. Please try again, " +
+            "or email rotaractkitale@gmail.com directly."
+          );
+
+          setSubmitting(false);
+        }
+      });
+
+      preselectReasonFromUrl();
+      showSuccessAfterRestart();
+    })();
+  </script>
+
 </body>
 </html>
